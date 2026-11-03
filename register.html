@@ -118,9 +118,63 @@
         .signup-btn:hover {
             background-color: #029c4a;
         }
+/* Верхняя панель в стиле 2016 года */
+.header-navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 45px;
+    background-color: #001a2e; /* Тёмно-синий олдскульный цвет */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+.header-left a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
+    margin-right: 15px;
+    font-family: Arial, sans-serif;
+}
+.header-right input {
+    background: #fff;
+    border: 1px solid #b5b5b5;
+    padding: 4px 8px;
+    font-size: 12px;
+    width: 130px;
+    margin-right: 5px;
+}
+.login-btn {
+    background: #02b757;
+    color: white;
+    border: none;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
     </style>
 </head>
 <body>
+<div class="header-navigation">
+    <div class="header-left">
+        <a href="./home.html" style="font-weight: bold; font-size: 15px;">OLDBLOX</a>
+        <a href="#">Play</a>
+        <a href="#">About</a>
+        <a href="#">Platforms</a>
+    </div>
+    <div class="header-right">
+        <input type="text" placeholder="Username/Email/Phone">
+        <input type="password" placeholder="Password">
+        <button class="login-btn">Log In</button>
+    </div>
+</div>
 
     <div class="landing-container">
         
