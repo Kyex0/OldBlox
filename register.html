@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Poblox — Sign Up</title>
+    <style>
+                 body {
+            font-family: "Arial", sans-serif;
+            margin: 0;
+            padding: 0;
+            /* Указываем файл bg.jpg из нашей папки */
+            background: url('scr2.jpg') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+
+        .landing-container {
+            display: flex;
+            width: 950px;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        /* Логотип слева */
+               
+        .landing-brand {
+            background-color: rgba(0, 0, 0, 0.4); /* Полупрозрачный черный фон */
+            padding: 20px 40px;                    /* Отступы вокруг текста внутри плашки */
+            border-radius: 8px;                    /* Красивые скругленные углы */
+            backdrop-filter: blur(4px);            /* Слегка размывает горки за буквами */
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            flex: 1;
+            margin-right: 50px;
+            text-align: center;
+        }
+
+
+        .landing-logo-text {
+            font-size: 80px;
+            font-weight: 900;
+            letter-spacing: -2px;
+            margin: 0;
+            color: #E2231A;
+             text-shadow: 
+                -2px -2px 0 #000,  
+                 2px -2px 0 #000,
+                -2px  2px 0 #000,
+                 2px  2px 0 #000,
+                 0px  4px 6px rgba(0,0,0,0.3); 
+
+        }
+
+        .landing-slogan {
+            font-size: 26px;
+            font-weight: bold;
+            margin-top: 5px;
+            color: #ffffff;
+        }
+
+        /* Карточка регистрации справа */
+        .register-card {
+            background: rgba(255, 255, 255, 0.95);
+            width: 380px;
+            padding: 30px;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            box-sizing: border-box;
+        }
+
+        .register-card h2 {
+            margin-top: 0;
+            color: #444;
+            font-size: 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .register-field {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #b5b5b5;
+            border-radius: 3px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        .register-field:focus {
+            border-color: #0074BD;
+            outline: none;
+        }
+
+        /* Зелёная кнопка Sign Up */
+        .signup-btn {
+            background-color: #02b757;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 14px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: inset 0 -2px 0 rgba(0,0,0,0.2);
+            transition: background 0.1s;
+        }
+
+        .signup-btn:hover {
+            background-color: #029c4a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="landing-container">
+        <!-- Левая часть: Логотип Poblox -->
+        <div class="landing-brand">
+            <h1 class="landing-logo-text">POBLOX</h1>
+            <div class="landing-slogan">Powering Imagination</div>
+        </div>
+
+                <!-- Правая часть: Форма -->
+        <div class="register-card">
+            <h2>Sign Up and Start Having Fun!</h2>
+            <input type="text" id="username-input" class="register-field" placeholder="Username (don't use your real name)">
+            <input type="password" class="register-field" placeholder="Password (min length 6)">
+            <!-- Кнопка с чётким ID -->
+            <button class="signup-btn" id="signup-submit">Sign Up</button>
+        </div>
+    </div>
+
+    <script>
+        // Намертво связываем кнопку и поле ввода со скриптом
+        document.getElementById('signup-submit').addEventListener('click', function(event) {
+            event.preventDefault(); // Защита от багов браузера
+            
+            const username = document.getElementById('username-input').value.trim();
+
+            if (username === "") {
+                alert("Please enter a username!");
+                return;
+            }
+
+            // Записываем ник в память компьютера
+            localStorage.setItem('poblox_user', username);
+
+            // Перенаправляем на главную страницу
+            window.location.href = './index.html';
+        });
+    </script>
+
+</body>
+</html>

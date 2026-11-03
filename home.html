@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Poblox — Home</title>
+    <style>
+        body {
+            font-family: "Arial", sans-serif;
+            background-color: #E3E4E4;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Upper Blue Header */
+        header {
+            background-color: #0074BD;
+            color: white;
+            height: 40px;
+            padding: 0 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            cursor: pointer; /* Делаем логотип кликабельным */
+            user-select: none;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 15px;
+            font-size: 13px;
+        }
+
+        .header-nav a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        /* Делаем кнопку Coins визуально кликабельной */
+        #coins-trigger {
+            cursor: pointer;
+            font-weight: bold;
+            background-color: rgba(255,255,255,0.15);
+            padding: 2px 8px;
+            border-radius: 3px;
+            transition: background 0.2s;
+        }
+        #coins-trigger:hover {
+            background-color: rgba(255,255,255,0.3);
+        }
+
+        .search-container {
+            flex: 0 1 400px;
+            margin: 0 20px;
+        }
+
+        .search-bar {
+            width: 100%;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            padding: 4px 10px;
+            font-size: 13px;
+            box-sizing: border-box;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 13px;
+        }
+
+        /* Красивая анимация для баланса при изменении */
+        .robux-balance {
+            font-weight: bold;
+            background-color: rgba(255,255,255,0.15);
+            padding: 2px 6px;
+            border-radius: 3px;
+            transition: transform 0.1s ease-in-out;
+            display: inline-block;
+        }
+        
+        .bump {
+            transform: scale(1.3);
+            color: #FFFF00; /* Вспыхивает желтым при зачислении */
+        }
+
+        /* Main App Grid */
+        .wrapper {
+            display: flex;
+            width: 100%;
+            min-height: calc(100vh - 40px);
+        }
+
+        /* Left White Sidebar Menu */
+        nav {
+            width: 160px;
+            background-color: #ffffff;
+            border-right: 1px solid #BDC2C5;
+            padding: 20px 10px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        nav a {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            color: #393B3D;
+            text-decoration: none;
+            font-size: 13px;
+            border-radius: 3px;
+        }
+
+        nav a:hover {
+            background-color: #F2F4F5;
+        }
+
+        nav a.active {
+            background-color: #E3E4E4;
+            font-weight: bold;
+        }
+
+        /* Content Area */
+        .main-content {
+            flex: 1;
+            max-width: 900px;
+            margin-left: 340px;
+            padding: 25px 20px;
+        }
+
+        /* Profile Header */
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .profile-avatar {
+            width: 140px;
+            height: 140px;
+            background-color: #D6D6D6;
+            border-radius: 50%;
+            border: 2px solid #BCBDCE;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #555;
+            font-weight: bold;
+            flex-shrink: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .profile-username {
+            font-size: 30px;
+            color: #393B3D;
+            font-weight: bold;
+        }
+
+        /* Section Containers */
+        .section-box {
+            background: white;
+            padding: 20px;
+            border-radius: 4px;
+            border: 1px solid #BDC2C5;
+            margin-bottom: 22px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .section-title-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #393B3D;
+        }
+
+        .see-all-btn {
+            background-color: #00A2FF;
+            color: white;
+            border: none;
+            padding: 4px 12px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        /* Friends List */
+        .friends-row {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+        }
+
+        .friend-item {
+            text-align: center;
+            width: 102px;
+            font-size: 13px;
+            flex-shrink: 0;
+            color: #393B3D;
+        }
+
+        .friend-pic {
+            width: 102px;
+            height: 102px;
+            background-color: #E3E4E4;
+            border-radius: 50%;
+            margin: 0 auto 8px auto;
+            border: 1px solid #D1D1D1;
+        }
+
+        /* Games Grid */
+        .games-row {
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap; /* Чтобы найденные игры красиво переносились */
+        }
+
+        .game-item {
+            width: 150px;
+            font-size: 13px;
+            background: none;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            padding: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .game-cover {
+            width: 150px;
+            height: 150px;
+            background-color: #E3E4E4;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #666;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .game-name {
+            font-weight: bold;
+            color: #393B3D;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 2px;
+        }
+
+        .game-playing {
+            color: #747678;
+            font-size: 11px;
+            margin-top: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Topbar Header -->
+    <header>
+        <div class="header-left">
+            <!-- Клик сюда вернет всё как было -->
+            <div class="logo" id="logo-btn">POBLOX</div>
+            <div class="header-nav">
+                <a href="#">Games</a>
+                <a href="#">Catalog</a>
+                <a href="#">Develop</a>
+                <!-- Нажми на Coins! -->
+                <span id="coins-trigger">+ Get Coins</span>
+            </div>
+        </div>
+        
+        <div class="search-container">
+            <input type="text" class="search-bar" id="search-input" placeholder="Введите название игры (например, Zombie)...">
+        </div>
+
+        <div class="header-right">
+            <span>@Gamesjes</span>
+            <!-- Сюда будут прибавляться монетки -->
+            <span class="robux-balance" id="balance-display">⦾ 10</span>
+        </div>
+    </header>
+
+        <div class="wrapper">
+        
+        <!-- Левое меню -->
+        <nav>
+            <a href="#" class="active">Home</a>
+            <a href="#">Profile</a>
+            <a href="#">Messages</a>
+            <a href="#">Friends</a>
+            <a href="#">Avatar</a>
+            <a href="#">Inventory</a>
+            <a href="#">Trade</a>
+            <a href="#">Groups</a>
+        </nav>
+
+        <!-- Центральный контент -->
+        <div class="main-content">
+            
+            <!-- Блок профиля -->
+            <div class="profile-header">
+                <div class="profile-avatar">Avatar</div>
+                <div class="profile-username">Hello, Gamesjes</div>
+            </div>
+
+            <!-- Текст Friends вынесен НАВЕРХ над блоком -->
+            <div class="section-title-container">
+                <div class="section-title">Friends (25)</div>
+                <button class="see-all-btn">See All</button>
+            </div>
+            <!-- Белая коробка с друзьями -->
+            <div class="section-box" id="friends-box">
+                <div class="friends-row">
+                    <div class="friend-item"><div class="friend-pic"></div>gewoon...</div>
+                    <div class="friend-item"><div class="friend-pic"></div>gewoon...</div>
+                    <div class="friend-item"><div class="friend-pic"></div>gewoon...</div>
+                    <div class="friend-item"><div class="friend-pic"></div>gewoon...</div>
+                    <div class="friend-item"><div class="friend-pic"></div>gewoon...</div>
+                    <div class="friend-item"><div class="friend-pic"></div>gewoon...</div>
+                </div>
+            </div>
+
+            <!-- Текст Continue Playing вынесен НАВЕРХ над блоком -->
+            <div class="section-title-container">
+                <div class="section-title" id="games-section-title">Continue Playing</div>
+                <button class="see-all-btn">See All</button>
+            </div>
+            <!-- Белая коробка с играми -->
+            <div class="section-box">
+                <div class="games-row">
+                    <div class="game-item">
+                        <div class="game-cover" style="background-color: #85E3FF; color: #005580;">HIDE AND SEEK</div>
+                        <div class="game-name">Hide and Seek</div>
+                        <div class="game-playing">👤 6.9K Playing</div>
+                    </div>
+                    <div class="game-item">
+                        <div class="game-cover" style="background-color: #BFFCC6; color: #006611;">ZOMBIE ATTACK</div>
+                        <div class="game-name">Zombie Attack</div>
+                        <div class="game-playing">👤 3K Playing</div>
+                    </div>
+                    <div class="game-item">
+                        <div class="game-cover" style="background-color: #FFC9DE; color: #800033;">BE A TOY</div>
+                        <div class="game-name">Be a Toy!</div>
+                        <div class="game-playing">👤 137 Playing</div>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- Конец main-content -->
+
+    </div> <!-- Конец wrapper -->
+
+</body>
+</html>
