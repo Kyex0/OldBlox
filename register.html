@@ -134,6 +134,16 @@
             <h2>Sign Up and Start Having Fun!</h2>
             <input type="text" id="username-input" class="register-field" placeholder="Username (don't use your real name)">
             <input type="password" class="register-field" placeholder="Password (min length 6)">
+<br>
+<p style="color:#444; font-size:12px; margin:5px 0;">Birthday:</p>
+<select class="register-field" style="width:30%; display:inline-block;"><option>Month</option></select>
+<select class="register-field" style="width:30%; display:inline-block;"><option>Day</option></select>
+<select class="register-field" style="width:35%; display:inline-block;"><option>Year</option></select>
+
+<p style="color:#444; font-size:12px; margin:5px 0;">Gender:</p>
+<button type="button" class="register-field" style="width:48%; display:inline-block; background:#fff;">Boy</button>
+<button type="button" class="register-field" style="width:48%; display:inline-block; background:#fff;">Girl</button>
+
             <!-- Кнопка с чётким ID -->
             <button class="signup-btn" id="signup-submit">Sign Up</button>
         </div>
@@ -150,6 +160,13 @@
                 alert("Please enter a username!");
                 return;
             }
+
+document.querySelectorAll('button[type="button"]').forEach(btn => {
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('button[type="button"]').forEach(b => b.style.background = '#fff');
+        this.style.background = '#e1f5fe'; 
+    });
+});
 
             // Записываем ник в память компьютера
             localStorage.setItem('poblox_user', username);
