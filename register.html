@@ -190,7 +190,11 @@
                 <!-- Правая часть: Форма -->
         <div class="register-card">
             <h2>Sign Up and Start Having Fun!</h2>
-            <input type="text" id="username-input" class="register-field" maxlenght="25" placeholder="Username (don't use your real name)">
+           <input type="text" id="username-input" class="register-field" maxlength="25" oninput="this.value = this.value.replace(/[^a-zA-Z0-9_]/g, '')" placeholder="Username (don't use your real name)">
+
+
+
+
             <input type="password" class="register-field" placeholder="Password (min length 6)">
 <br>
 <p style="color:#444; font-size:12px; margin:5px 0;">Birthday:</p>
