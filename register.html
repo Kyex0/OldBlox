@@ -190,7 +190,7 @@
                 <!-- Правая часть: Форма -->
         <div class="register-card">
             <h2>Sign Up and Start Having Fun!</h2>
-            <input type="text" id="username-input" class="register-field" placeholder="Username (don't use your real name)">
+            <input type="text" id="username-input" class="register-field" maxlenght="25" placeholder="Username (don't use your real name)">
             <input type="password" class="register-field" placeholder="Password (min length 6)">
 <br>
 <p style="color:#444; font-size:12px; margin:5px 0;">Birthday:</p>
@@ -208,15 +208,22 @@
     </div>
 
     <script>
-        // Намертво связываем кнопку и поле ввода со скриптом
+       
         document.getElementById('signup-submit').addEventListener('click', function(event) {
-            event.preventDefault(); // Защита от багов браузера
+            event.preventDefault(); 
             
             const username = document.getElementById('username-input').value.trim();
 
             if (username === "") {
                 alert("Please enter a username!");
                 return;
+               
+const validName = /^[a-zA-Z0-9_]+$/;
+if (!validName.test(username)) {
+    alert("Username can only contain English letters, numbers, and underscores!");
+    return;
+}
+
             }
 
 document.querySelectorAll('button[type="button"]').forEach(btn => {
