@@ -217,12 +217,11 @@
             if (username === "") {
                 alert("Please enter a username!");
                 return;
-               
-const validName = /^[a-zA-Z0-9_]+$/;
-if (!validName.test(username)) {
-    alert("Username can only contain English letters, numbers, and underscores!");
-    return;
-}
+               }
+             const validName = /^[a-zA-Z0-9_]+$/;
+            if (!validName.test(username)) {
+               alert("Username can only contain English letters, numbers, and underscores!");
+             return;
 
             }
 
