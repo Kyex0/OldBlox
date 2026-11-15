@@ -401,18 +401,18 @@
  <div class="chat-bar" onclick="alert('Chat & Party: 0 friends online')">Chat & Party</div>
 
 <script>
-  const user = localStorage.getItem('olblox_user') || 'Guest';
+  const user = localStorage.getItem('oldblox_user') || 'Guest';
   document.querySelector('.header-right span').innerText = '@' + user;
   const profileTitle = document.querySelector('.profile-username');
   profileTitle.innerHTML = `Hello, ${user}!`;
 
-  if (gender || birthday) {
+  {
     profileTitle.innerHTML += `<div style="font-size: 13px; color: #747678; font-weight: normal; margin-top: 4px;">${gender} • Born: ${birthday}</div>`;
   }
 
   let coins = Number(localStorage.getItem('oldblox_coins')) || 10;
   const balanceEl = document.getElementById('balance-display');
-  balanceEl.innerText = '⦾ ' + coins + ' C';
+  balanceEl.innerText = '⦾ ' + coins;
 
   document.getElementById('coins-trigger').addEventListener('click', function() {
     coins += 5;
