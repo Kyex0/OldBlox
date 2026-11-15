@@ -210,37 +210,6 @@
     </div>
 
     <script>
-       
-        document.getElementById('signup-submit').addEventListener('click', function(event) {
-            event.preventDefault(); 
-            
-            const username = document.getElementById('username-input').value.trim();
-
-            if (username === "") {
-                alert("Please enter a username!");
-                return;
-               }
-             const validName = /^[a-zA-Z0-9_]+$/;
-            if (!validName.test(username)) {
-               alert("Username can only contain English letters, numbers, and underscores!");
-             return;
-
-            }
-
-document.querySelectorAll('button[type="button"]').forEach(btn => {
-    btn.addEventListener('click', function() {
-        document.querySelectorAll('button[type="button"]').forEach(b => b.style.background = '#fff');
-        this.style.background = '#e1f5fe'; 
-    });
-});
-
-            // Записываем ник в память компьютера
-            localStorage.setItem('poblox_user', username);
-
-            // Перенаправляем на главную страницу
-            window.location.href = './home.html';
-        });
-    <script>
   // 1. Заполняем дату рождения
      const selects = document.querySelectorAll('select');
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
