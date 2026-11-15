@@ -282,7 +282,24 @@
             color: #747678;
             font-size: 11px;
             margin-top: 3px;
-        }
+        }}
+
+/* Синяя плашка Chat & Party в правом нижнем углу */
+.chat-bar {
+  position: fixed;
+  bottom: 0;
+  right: 20px;
+  width: 240px;
+  background-color: #0074BD;
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 4px 4px 0 0;
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.2);
+  cursor: pointer;
+  z-index: 999;
+}
     </style>
 </head>
 <body>
@@ -381,6 +398,10 @@
         </div> <!-- Конец main-content -->
 
     </div> <!-- Конец wrapper -->
+    <script>
+        <div class="chat-bar" onclick="alert('Chat & Party: 0 friends online')">Chat & Party</div>
+
+    </script>
 
 </body>
 </html>
