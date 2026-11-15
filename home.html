@@ -402,9 +402,6 @@
 
 <script>
   const user = localStorage.getItem('olblox_user') || 'Guest';
-  const gender = localStorage.getItem('olblox_gender') || '';
-  const birthday = localStorage.getItem('olblox_birthday') || '';
-
   document.querySelector('.header-right span').innerText = '@' + user;
   const profileTitle = document.querySelector('.profile-username');
   profileTitle.innerHTML = `Hello, ${user}!`;
