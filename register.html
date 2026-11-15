@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -241,11 +242,13 @@ document.querySelectorAll('button[type="button"]').forEach(btn => {
         });
     <script>
   // 1. Заполняем дату рождения
-  const selects = document.querySelectorAll('select');
+     const selects = document.querySelectorAll('select');
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  months.forEach(m => selects[0].innerHTML += `<option value="${m}">${m}</option>`);
-  for (let d = 1; d <= 31; d++) selects[1].innerHTML += `<option value="${d}">${d}</option>`;
-  for (let y = 2016; y >= 1950; y--) selects[2].innerHTML += `<option value="${y}">${y}</option>`;
+  months.forEach(m => selects.item(0).innerHTML += `<option value="${m}">${m}</option>`);
+  for (let d = 1; d <= 31; d++) selects.item(1).innerHTML += `<option value="${d}">${d}</option>`;
+  for (let y = 2016; y >= 1950; y--) selects.item(2).innerHTML += `<option value="${y}">${y}</option>`;
+
+
 
   // 2. Выбор пола (Boy / Girl)
   let selectedGender = "";
@@ -262,9 +265,10 @@ document.querySelectorAll('button[type="button"]').forEach(btn => {
 
     const username = document.getElementById('username-input').value.trim();
     const password = document.getElementById('password-input').value;
-    const month = selects[0].value;
-    const day = selects[1].value;
-    const year = selects[2].value;
+    const month = selects.item(0).value;
+    const day = selects.item(1).value;
+    const year = selects.item(2).value;
+
 
     if (!/^[a-zA-Z0-9_]+$/.test(username)) {
       alert("Username: только английские буквы, цифры и _ !");
@@ -275,11 +279,11 @@ document.querySelectorAll('button[type="button"]').forEach(btn => {
       return;
     }
     if (month === "Month" || day === "Day" || year === "Year") {
-      alert("Выбери дату рождения!");
+      alert("select date!");
       return;
     }
     if (!selectedGender) {
-      alert("Выбери пол (Boy или Girl)!");
+      alert("select gender (Boy или Girl)!");
       return;
     }
 
