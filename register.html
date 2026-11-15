@@ -240,11 +240,11 @@
 
 
     if (!/^[a-zA-Z0-9_]+$/.test(username)) {
-      alert("Username: только английские буквы, цифры и _ !");
+      alert("Username: use only English letters, numbers and _ !");
       return;
     }
     if (password.length < 6) {
-      alert("Password должен быть минимум 6 символов!");
+      alert("Password should have min 6 symbols!");
       return;
     }
     if (month === "Month" || day === "Day" || year === "Year") {
@@ -256,12 +256,35 @@
       return;
     }
 
-    localStorage.setItem('poblox_user', username);
-    localStorage.setItem('poblox_birthday', `${month} ${day}, ${year}`);
-    localStorage.setItem('poblox_gender', selectedGender);
+    localStorage.setItem('oldblox_user', username);
+    localStorage.setItem('oldblox_pass', password);
+    localStorage.setItem('oldblox_birthday', `${month} ${day}, ${year}`);
+    localStorage.setItem('oldblox_gender', selectedGender);
 
     window.location.href = './home.html';
   });
+         // Вход по кнопке Log In в правом верхнем углу
+  document.querySelector('.login-btn').addEventListener('click', function() {
+    const inputs = document.querySelectorAll('.header-right input');
+    const loginUser = inputs.item(0).value.trim();
+    const loginPass = inputs.item(1).value;
+
+    const savedUser = localStorage.getItem('poblox_user');
+    const savedPass = localStorage.getItem('poblox_pass');
+
+    if (!savedUser) {
+      alert("First Sign Up!");
+      return;
+    }
+
+    if (loginUser === savedUser && loginPass === savedPass) {
+      localStorage.setItem('oldblox_logged_in', 'true');
+      window.location.href = './home.html';
+    } else {
+      alert("Wrong Username или Password!");
+    }
+  });
+ 
 </script>
 
 
