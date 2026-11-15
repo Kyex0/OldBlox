@@ -420,7 +420,7 @@
   document.getElementById('coins-trigger').addEventListener('click', function() {
     coins += 5;
     localStorage.setItem('poblox_coins', coins);
-    balanceEl.innerText = '⦾ ' + coins + ' C';
+    balanceEl.innerText = '⦾ ' + coins;
     balanceEl.classList.add('bump');
     setTimeout(() => balanceEl.classList.remove('bump'), 150);
   });
