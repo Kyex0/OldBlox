@@ -239,7 +239,58 @@ document.querySelectorAll('button[type="button"]').forEach(btn => {
             // Перенаправляем на главную страницу
             window.location.href = './home.html';
         });
-    </script>
+    <script>
+  // 1. Заполняем дату рождения
+  const selects = document.querySelectorAll('select');
+  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  months.forEach(m => selects[0].innerHTML += `<option value="${m}">${m}</option>`);
+  for (let d = 1; d <= 31; d++) selects[1].innerHTML += `<option value="${d}">${d}</option>`;
+  for (let y = 2016; y >= 1950; y--) selects[2].innerHTML += `<option value="${y}">${y}</option>`;
+
+  // 2. Выбор пола (Boy / Girl)
+  let selectedGender = "";
+  document.querySelectorAll('button[type="button"]').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('button[type="button"]').forEach(b => b.style.background = '#fff');
+      this.style.background = '#e1f5fe';
+      selectedGender = this.innerText.trim();
+    });
+  });
+  // 3. Проверка и сохранение при нажатии Sign Up
+  document.getElementById('signup-submit').addEventListener('click', function(event) {
+    event.preventDefault();
+
+    const username = document.getElementById('username-input').value.trim();
+    const password = document.getElementById('password-input').value;
+    const month = selects[0].value;
+    const day = selects[1].value;
+    const year = selects[2].value;
+
+    if (!/^[a-zA-Z0-9_]+$/.test(username)) {
+      alert("Username: только английские буквы, цифры и _ !");
+      return;
+    }
+    if (password.length < 6) {
+      alert("Password должен быть минимум 6 символов!");
+      return;
+    }
+    if (month === "Month" || day === "Day" || year === "Year") {
+      alert("Выбери дату рождения!");
+      return;
+    }
+    if (!selectedGender) {
+      alert("Выбери пол (Boy или Girl)!");
+      return;
+    }
+
+    localStorage.setItem('poblox_user', username);
+    localStorage.setItem('poblox_birthday', `${month} ${day}, ${year}`);
+    localStorage.setItem('poblox_gender', selectedGender);
+
+    window.location.href = './home.html';
+  });
+</script>
+
 
 </body>
 </html>
