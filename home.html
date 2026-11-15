@@ -282,7 +282,7 @@
             color: #747678;
             font-size: 11px;
             margin-top: 3px;
-        }}
+        }
 
 /* Синяя плашка Chat & Party в правом нижнем углу */
 .chat-bar {
@@ -398,10 +398,34 @@
         </div> <!-- Конец main-content -->
 
     </div> <!-- Конец wrapper -->
-    <script>
-        <div class="chat-bar" onclick="alert('Chat & Party: 0 friends online')">Chat & Party</div>
+ <div class="chat-bar" onclick="alert('Chat & Party: 0 friends online')">Chat & Party</div>
 
-    </script>
+<script>
+  const user = localStorage.getItem('poblox_user') || 'Guest';
+  const gender = localStorage.getItem('poblox_gender') || '';
+  const birthday = localStorage.getItem('poblox_birthday') || '';
+
+  document.querySelector('.header-right span').innerText = '@' + user;
+  const profileTitle = document.querySelector('.profile-username');
+  profileTitle.innerHTML = `Hello, ${user}!`;
+
+  if (gender || birthday) {
+    profileTitle.innerHTML += `<div style="font-size: 13px; color: #747678; font-weight: normal; margin-top: 4px;">${gender} • Born: ${birthday}</div>`;
+  }
+
+  let coins = Number(localStorage.getItem('poblox_coins')) || 10;
+  const balanceEl = document.getElementById('balance-display');
+  balanceEl.innerText = '⦾ ' + coins + ' C';
+
+  document.getElementById('coins-trigger').addEventListener('click', function() {
+    coins += 5;
+    localStorage.setItem('poblox_coins', coins);
+    balanceEl.innerText = '⦾ ' + coins + ' C';
+    balanceEl.classList.add('bump');
+    setTimeout(() => balanceEl.classList.remove('bump'), 150);
+  });
+</script>
+
 
 </body>
 </html>
